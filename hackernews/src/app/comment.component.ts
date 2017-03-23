@@ -3,7 +3,8 @@ import { Comment } from './types';
 
 @Component({
     selector: 'comment',
-    templateUrl: './comment.component.html'
+    templateUrl: './comment.component.html',
+    styleUrls: ['./comment.component.css'],
 })
 export class CommentComponent {
     @Input()

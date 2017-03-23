@@ -6,6 +6,7 @@ import { FrontPageComponent } from './frontpage.component';
 import { AppComponent } from './app.component';
 import { StoryDetailComponent } from './story-detail.component';
 import { CommentComponent } from './comment.component';
+import { RouterModule }   from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,9 +16,24 @@ import { CommentComponent } from './comment.component';
       FrontPageComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule
+      BrowserModule,
+      FormsModule,
+      HttpModule,
+      RouterModule.forRoot([
+          {
+              path: 'frontpage',
+              component: FrontPageComponent
+          },
+          {
+              path: 'story/:id',
+              component: StoryDetailComponent
+          },
+          {
+              path: '',
+              redirectTo: '/frontpage',
+              pathMatch: 'full'
+          }
+      ])
   ],
   providers: [],
   bootstrap: [AppComponent]

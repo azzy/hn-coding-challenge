@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+
 
 @Component({
     selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
     title = 'Hacker News';
+
+    constructor(private location: Location) { }
+
+    goBack(): void {
+        this.location.back();
+    }
 }

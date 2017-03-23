@@ -1,11 +1,18 @@
-<h1>{{title}}</h1>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6">
-      <front-page></front-page>
-    </div>
-    <div class="selected-story col-md-6" *ngIf="selectedStory">
-      <story-detail [story]="selectedStory"></story-detail>
-    </div>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+  <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="/">HN</a>
+  <div class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
   </div>
+</nav>
+<div class="container app-wrapper">
+  <h1>{{title}}</h1>
+  <router-outlet></router-outlet>
 </div>

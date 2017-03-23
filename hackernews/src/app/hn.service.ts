@@ -24,29 +24,15 @@ export class HNService {
         return Observable.throw(errMsg);
     }
 
-
-    private extractStories(res:Response) {
+    private extractStories(res:Response): Story[] {
         let body = res.json();
         let items = body.hits || {};
-        let stories = _.map(items, (item:any) => {
-            return {
-                id: item.objectID,
-                author: item.author,
-                created: item.created_at,
-                points: item.points,
-                text: item.story_text,
-                title: item.title,
-                url: item.url,
-                num_comments: item.num_comments,
-                children: []
-            }
-        });
+        let stories = _.map(items, storyTransformer);
+        console.log('stories', stories);
         return stories;
     }
 
-    private extractComments(res:Response) {
-        console.log('res', res);
-        let data = res.json();
+    private extractStory(res:Response): Story {
         var commentTransformer = function(comment:any) {
             return {
                 id: comment.id,
@@ -60,9 +46,12 @@ export class HNService {
             };
         };
 
+        let data = res.json();
+        let story = storyTransformer(data);
         let comments = _.map(data.children, commentTransformer);
-        console.log('comments', comments);
-        return comments;
+        console.log('story', story, 'comments', comments);
+        story.children = comments;
+        return story;
     }
 
     getStories() {
@@ -72,10 +61,24 @@ export class HNService {
             .catch(this.handleError);
     }
 
-    getComments(storyId: string) {
+    getStory(storyId: string) {
         let url = `https://hn.algolia.com/api/v1/items/${storyId}`;
         return this.http.get(url)
-            .map(this.extractComments)
+            .map(this.extractStory)
             .catch(this.handleError);
+    }
+}
+
+var storyTransformer = function(item:any):Story {
+    return {
+        id: item.objectID || String(item.id),
+        author: item.author,
+        created: item.created_at,
+        points: item.points,
+        text: item.story_text,
+        title: item.title,
+        url: item.url,
+        numComments: item.num_comments,
+        children: []
     }
 }

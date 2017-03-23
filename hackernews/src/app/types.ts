@@ -10,6 +10,7 @@ export class Item {
 export class Story extends Item {
     title: string;
     url: string;
+    numComments: number;
 }
 
 export class Comment extends Item {
