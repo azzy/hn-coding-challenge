@@ -1,0 +1,10 @@
+.story {
+    background: #eee;
+    cursor: pointer;
+}
+.story:hover {
+    background: #f0f0f0;
+}
+.selected {
+    background: #fafafa;
+}

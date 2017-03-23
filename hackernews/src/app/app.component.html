@@ -1,0 +1,11 @@
+<h1>{{title}}</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <front-page></front-page>
+    </div>
+    <div class="selected-story col-md-6" *ngIf="selectedStory">
+      <story-detail [story]="selectedStory"></story-detail>
+    </div>
+  </div>
+</div>
