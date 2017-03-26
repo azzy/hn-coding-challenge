@@ -1,9 +1,9 @@
 <div *ngIf="story" class="story-detail">
   <div class="meta">
-    <span class="story-id">{{story.id}}</span>
-    <span class="story-author">{{story.author}}</span>
-    <span class="story-date">{{story.created | date:'medium'}}</span>
-    <span class="story-points">{{story.points}}</span>
+    <!--<span class="story-id">{{story.id}}</span>-->
+    <span class="story-author">{{story.author}}</span> |
+    <span class="story-date">{{story.created | date:'medium'}}</span> |
+    <span class="story-points">{{story.points}} pts</span>
   </div>
   <h2><a href="{{story.url}}">{{story.title}}</a></h2>
   <ul class="comments">

@@ -1,12 +1,12 @@
-<ul class="stories">
-  <li class="story" *ngFor="let story of stories"
+<ul class="stories list-group">
+  <li class="story list-group-item" *ngFor="let story of stories"
       [class.selected]="story===selectedStory"
       (click)="onSelect(story)">
     <div class="meta">
-      <span class="story-id">{{story.id}}</span>
-      <span class="story-author">{{story.author}}</span>
-      <span class="story-created">{{story.created}}</span>
-      <span class="story-points">{{story.points}}</span>
+      <!--<span class="story-id">{{story.id}}</span>-->
+      <span class="story-author">{{story.author}}</span> |
+      <span class="story-created">{{story.created | date:'medium'}}</span> |
+      <span class="story-points">{{story.points}} pts</span>
     </div>
     <h3>{{story.title}}</h3>
   </li>

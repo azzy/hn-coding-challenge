@@ -1,9 +1,9 @@
 <div class="comment card">
   <div class="card-block">
     <div class="meta card-subtitle text-muted">
-      <span class="comment-author">{{data.author}}</span>
+      <span class="comment-author">{{data.author}}</span> |
       <span class="comment-created">{{data.created | date:'medium'}}</span>
-      <span class="comment-points">{{data.points}}</span>
+      <!--<span class="comment-points">{{data.points}}</span>-->
     </div>
     <div class="card-text" [innerHTML]="data.text">
     </div>
